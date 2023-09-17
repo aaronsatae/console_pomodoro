@@ -12,11 +12,18 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         PomodoroTimerFactory factory = PomodoroTimerFactory.getInstance();
 
-        renderer.clearConsole();
-        renderer.printMenu();
+        while (true) {
+            renderer.clearConsole();
+            renderer.printMenu();
 
-        String command = scanner.next();
-        if (command.equals("1")) {
+            String command = scanner.next();
+            if (command.equals("2")) {
+                break;
+            }
+            if (!command.equals("1")) {
+                continue;
+            }
+
             renderer.clearConsole();
             PomodoroTimer pomodoroTimer = factory.next();
             pomodoroTimer.start();
