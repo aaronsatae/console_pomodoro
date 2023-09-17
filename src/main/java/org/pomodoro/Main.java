@@ -7,6 +7,10 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         ConsoleRenderer renderer = new ConsoleRenderer();
 
+        renderer.clearConsole();
+        renderer.printMenu();
+
+        renderer.clearConsole();
         PomodoroTimer pomodoroTimer = new PomodoroTimer(3);
         pomodoroTimer.start();
         while (!pomodoroTimer.isFinished()) {
@@ -16,5 +20,6 @@ public class Main {
         renderer.printProgressBar(pomodoroTimer);
         renderer.printFinishMessage();
 
+        renderer.printQuit();
     }
 }

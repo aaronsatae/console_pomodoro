@@ -23,6 +23,14 @@ public class ConsoleRenderer {
     private static final String CYAN_BACKGROUND = "\u001B[46m";
     private static final String WHITE_BACKGROUND = "\u001B[47m";
 
+    public void printMenu() {
+        System.out.print("""
+                Enter the command.
+                1. start
+                2. exit
+                """);
+    }
+
     public void printProgressBar(final PomodoroTimer pomodoroTimer) {
         carriageReturn();
 
@@ -52,6 +60,15 @@ public class ConsoleRenderer {
                     : "";
         }
         System.out.println();
+    }
+
+    public void printQuit() {
+        System.out.println("Quit Pomodoro Timer...");
+    }
+
+    public void clearConsole() {
+        System.out.print("\033[H\033[2J"); // Clears the screen
+        System.out.flush();
     }
 
     private static void carriageReturn() {
