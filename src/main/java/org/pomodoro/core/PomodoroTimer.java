@@ -7,14 +7,17 @@ import java.util.concurrent.TimeUnit;
 
 public class PomodoroTimer {
     private final int durationInSecond;
+    private final TimerType timerType;
     private final CountDownLatch latch;
     private final ScheduledExecutorService scheduledExecutorService;
     private final Runnable command;
     private volatile TimerStatus timerStatus;
 
-    public PomodoroTimer(int durationInSecond) {
-        this.timerStatus = TimerStatus.READY;
+    public PomodoroTimer(final int durationInSecond, final TimerType timerType) {
         this.durationInSecond = durationInSecond;
+        this.timerType = timerType;
+
+        this.timerStatus = TimerStatus.READY;
         this.latch = new CountDownLatch(this.durationInSecond);
         this.scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
         this.command = () -> {
@@ -45,6 +48,10 @@ public class PomodoroTimer {
 
     public long getRemainTimeInSecond() {
         return this.latch.getCount();
+    }
+
+    public TimerType getTimerType() {
+        return this.timerType;
     }
 
     /**

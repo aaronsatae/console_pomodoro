@@ -41,7 +41,7 @@ public class ConsoleRenderer {
         final int progressLength = (int) ((pomodoroTimer.getElapsedTimeInSecond() * PROGRESS_BAR_LENGTH) / durationInSecond);
         final String progressBar = "#".repeat(progressLength) + "-".repeat(PROGRESS_BAR_LENGTH - progressLength);
 
-        System.out.printf("Pomodoro: [%s] %s", remainTime, progressBar);
+        System.out.printf("%s [%s]%s", pomodoroTimer.getTimerType(), remainTime, progressBar);
     }
 
     public void printFinishMessage() {

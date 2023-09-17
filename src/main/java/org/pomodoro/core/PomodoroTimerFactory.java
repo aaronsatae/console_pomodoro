@@ -40,14 +40,14 @@ public class PomodoroTimerFactory {
     }
 
     private PomodoroTimer work() {
-        return new PomodoroTimer(workDurationInSeconds);
+        return new PomodoroTimer(workDurationInSeconds, TimerType.WORK);
     }
 
     private PomodoroTimer shortBreak() {
-        return new PomodoroTimer(shortBreakDurationInSeconds);
+        return new PomodoroTimer(shortBreakDurationInSeconds, TimerType.BREAK);
     }
 
     private PomodoroTimer longBreak() {
-        return new PomodoroTimer(longBreakDurationInSeconds);
+        return new PomodoroTimer(longBreakDurationInSeconds, TimerType.BREAK);
     }
 }

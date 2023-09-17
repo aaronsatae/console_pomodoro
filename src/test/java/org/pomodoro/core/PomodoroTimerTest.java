@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 class PomodoroTimerTest {
     @Test
     void startAndFinished() throws InterruptedException {
-        PomodoroTimer pomodoroTimer = new PomodoroTimer(5);
+        PomodoroTimer pomodoroTimer = new PomodoroTimer(5, TimerType.WORK);
         pomodoroTimer.start();
         Assertions.assertFalse(pomodoroTimer.isFinished());
 
@@ -21,7 +21,7 @@ class PomodoroTimerTest {
 
     @Test
     void startAndPause() throws InterruptedException {
-        PomodoroTimer pomodoroTimer = new PomodoroTimer(5);
+        PomodoroTimer pomodoroTimer = new PomodoroTimer(5, TimerType.WORK);
         pomodoroTimer.start();
 
         Thread.sleep(3100);
@@ -36,7 +36,7 @@ class PomodoroTimerTest {
 
     @Test
     void startAndStop() throws InterruptedException {
-        PomodoroTimer pomodoroTimer = new PomodoroTimer(5);
+        PomodoroTimer pomodoroTimer = new PomodoroTimer(5, TimerType.WORK);
         pomodoroTimer.start();
 
         Thread.sleep(3100);
