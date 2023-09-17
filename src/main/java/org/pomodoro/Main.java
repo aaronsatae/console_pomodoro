@@ -1,7 +1,20 @@
 package org.pomodoro;
 
+import org.pomodoro.console.render.ConsoleRenderer;
+import org.pomodoro.core.PomodoroTimer;
+
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello Console world!");
+    public static void main(String[] args) throws InterruptedException {
+        ConsoleRenderer renderer = new ConsoleRenderer();
+
+        PomodoroTimer pomodoroTimer = new PomodoroTimer(3);
+        pomodoroTimer.start();
+        while (!pomodoroTimer.isFinished()) {
+            renderer.printProgressBar(pomodoroTimer);
+            Thread.sleep(100);
+        }
+        renderer.printProgressBar(pomodoroTimer);
+        renderer.printFinishMessage();
+
     }
 }

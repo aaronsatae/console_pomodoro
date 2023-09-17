@@ -24,7 +24,6 @@ public class PomodoroTimer {
                 return;
             }
             this.latch.countDown();
-            System.out.println(Thread.currentThread().getName() + " tick " + System.currentTimeMillis());
             if (this.latch.getCount() == 0) {
                 this.scheduledExecutorService.shutdownNow();
                 this.timerStatus = TimerStatus.FINISHED;
@@ -36,8 +35,16 @@ public class PomodoroTimer {
         return this.timerStatus == TimerStatus.FINISHED;
     }
 
+    public long getDurationInSecond() {
+        return this.durationInSecond;
+    }
+
     public long getElapsedTimeInSecond() {
         return this.durationInSecond - this.latch.getCount();
+    }
+
+    public long getRemainTimeInSecond() {
+        return this.latch.getCount();
     }
 
     /**
